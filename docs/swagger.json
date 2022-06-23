@@ -1,0 +1,336 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is Sample Service API By Layer.",
+        "title": "Sample Service API By Layer",
+        "contact": {
+            "name": "Nguyen Thanh Nam",
+            "email": "namnguyenthanh024@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8099",
+    "basePath": "/",
+    "paths": {
+        "/api/v1/capacities": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "Capacity"
+                ],
+                "summary": "Get list capacity",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "default": 10,
+                        "description": "size",
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "created_at desc",
+                        "description": "sort",
+                        "name": "sort",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "search",
+                        "name": "search",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "is_active",
+                        "name": "is_active",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "capacity_group_ids[]",
+                        "name": "capacity_group_ids[]",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.ListCapacityOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "{\"error_code\": \"\u003cMã lỗi\u003e\", \"error_msg\": \"\u003cNội dung lỗi\u003e\"}",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create new capacity",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Capacity"
+                ],
+                "summary": "Create new capacity",
+                "parameters": [
+                    {
+                        "description": "JSON body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CapacityInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.CapacityOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "{\"error_code\": \"\u003cMã lỗi\u003e\", \"error_msg\": \"\u003cNội dung lỗi\u003e\"}",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/capacities/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Capacity"
+                ],
+                "summary": "Get info capacity",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.CapacityOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "{\"error_code\": \"\u003cMã lỗi\u003e\", \"error_msg\": \"\u003cNội dung lỗi\u003e\"}",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update capacity",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Capacity"
+                ],
+                "summary": "Update capacity",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "JSON body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CapacityInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.CapacityOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "{\"error_code\": \"\u003cMã lỗi\u003e\", \"error_msg\": \"\u003cNội dung lỗi\u003e\"}",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Delete Capacity",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Capacity"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "500": {
+                        "description": "{\"error_code\": \"\u003cMã lỗi\u003e\", \"error_msg\": \"\u003cNội dung lỗi\u003e\"}",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.CapacityData": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "created_by": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.CapacityInput": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CapacityOutput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/dto.CapacityData"
+                }
+            }
+        },
+        "dto.ListCapacityOutput": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.CapacityData"
+                    }
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "sort": {
+                    "type": "string"
+                },
+                "total": {
+                    "type": "integer"
+                },
+                "total_pages": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

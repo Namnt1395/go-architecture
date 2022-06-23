@@ -1,0 +1,7 @@
+package errorcode
+
+const (
+	ERR_ENTITY_NAME_NOT_NULL = "ERR_ENTITY_NAME_NOT_NULL"
+	ERR_CAPACITY_NOT_FOUND   = "ERR_CAPACITY_NOT_FOUND"
+	ERR_REMOVE               = "ERR_REMOVE"
+)
